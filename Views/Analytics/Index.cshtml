@@ -1,0 +1,42 @@
+@{
+    ViewData["Title"] = "Analytics";
+}
+
+<div class="container mt-4">
+
+    <h2>Analytics</h2>
+
+    <hr />
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="card p-3 mb-3">
+                <h5>Monthly Spending</h5>
+                <h3>@ViewBag.MonthlySpend.ToString("C")</h3>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card p-3 mb-3">
+                <h5>Annual Spending</h5>
+                <h3>@ViewBag.AnnualSpend.ToString("C")</h3>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card p-3 mb-3">
+                <h5>Active Subscriptions</h5>
+                <h3>@ViewBag.TotalSubscriptions</h3>
+            </div>
+        </div>
+
+    </div>
+
+    <a asp-controller="Home"
+       asp-action="Index"
+       class="btn btn-primary">
+        Back to Dashboard
+    </a>
+
+</div>

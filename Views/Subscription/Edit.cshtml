@@ -1,0 +1,102 @@
+@model Sublytic.Models.Subscription
+
+@{
+    ViewData["Title"] = "Edit Subscription";
+}
+
+<div class="container mt-4">
+
+    <h2>Edit Subscription</h2>
+
+    <hr />
+
+    <form asp-action="Edit" method="post">
+
+        <input type="hidden" asp-for="SubscriptionId" />
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label"></label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Price" class="form-label"></label>
+            <input asp-for="Price" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="BillingCycle" class="form-label"></label>
+
+            <select asp-for="BillingCycle"
+                    asp-items="Html.GetEnumSelectList<Sublytic.Models.BillingCycle>()"
+                    class="form-control">
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="StartDate" class="form-label"></label>
+            <input asp-for="StartDate" type="date" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="NextRenewalDate" class="form-label"></label>
+            <input asp-for="NextRenewalDate" type="date" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="CategoryId" class="form-label">
+                Category
+            </label>
+
+            <select asp-for="CategoryId" class="form-control">
+
+                @foreach (var category in ViewBag.Categories)
+                {
+                    <option value="@category.CategoryId">
+                        @category.Name
+                    </option>
+                }
+
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="WebsiteUrl" class="form-label"></label>
+            <input asp-for="WebsiteUrl" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="AccountEmail" class="form-label"></label>
+            <input asp-for="AccountEmail" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Notes" class="form-label"></label>
+            <textarea asp-for="Notes" class="form-control"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label>
+                <input asp-for="IsActive" />
+                Active
+            </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Update
+        </button>
+
+        <a asp-action="Index" class="btn btn-secondary">
+            Cancel
+        </a>
+
+    </form>
+
+</div>

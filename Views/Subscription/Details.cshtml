@@ -1,0 +1,64 @@
+@model Sublytic.Models.Subscription
+
+@{
+    ViewData["Title"] = "Subscription Details";
+}
+
+<div class="container mt-4">
+
+    <h2>Subscription Details</h2>
+
+    <hr />
+
+    <dl class="row">
+
+        <dt class="col-sm-3">Name</dt>
+        <dd class="col-sm-9">@Model.Name</dd>
+
+        <dt class="col-sm-3">Description</dt>
+        <dd class="col-sm-9">@Model.Description</dd>
+
+        <dt class="col-sm-3">Price</dt>
+        <dd class="col-sm-9">@Model.Price.ToString("C")</dd>
+
+        <dt class="col-sm-3">Billing Cycle</dt>
+        <dd class="col-sm-9">@Model.BillingCycle</dd>
+
+        <dt class="col-sm-3">Start Date</dt>
+        <dd class="col-sm-9">@Model.StartDate.ToShortDateString()</dd>
+
+        <dt class="col-sm-3">Next Renewal</dt>
+        <dd class="col-sm-9">@Model.NextRenewalDate.ToShortDateString()</dd>
+
+        <dt class="col-sm-3">Category</dt>
+        <dd class="col-sm-9">@Model.Category?.Name</dd>
+
+        <dt class="col-sm-3">Active</dt>
+        <dd class="col-sm-9">@(Model.IsActive ? "Yes" : "No")</dd>
+
+        <dt class="col-sm-3">Auto Renew</dt>
+        <dd class="col-sm-9">@(Model.AutoRenew ? "Yes" : "No")</dd>
+
+        <dt class="col-sm-3">Website</dt>
+        <dd class="col-sm-9">@Model.WebsiteUrl</dd>
+
+        <dt class="col-sm-3">Account Email</dt>
+        <dd class="col-sm-9">@Model.AccountEmail</dd>
+
+        <dt class="col-sm-3">Notes</dt>
+        <dd class="col-sm-9">@Model.Notes</dd>
+
+    </dl>
+
+    <a asp-action="Edit"
+       asp-route-id="@Model.SubscriptionId"
+       class="btn btn-warning">
+        Edit
+    </a>
+
+    <a asp-action="Index"
+       class="btn btn-secondary">
+        Back
+    </a>
+
+</div>

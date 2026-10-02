@@ -1,0 +1,86 @@
+@model IEnumerable<Sublytic.Models.Subscription>
+
+@{
+    ViewData["Title"] = "Subscriptions";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center">
+        <h2>Subscriptions</h2>
+
+        <a asp-action="Create" class="btn btn-primary">
+            Add Subscription
+        </a>
+    </div>
+
+    <hr />
+
+    @if (!Model.Any())
+    {
+        <p>No subscriptions found.</p>
+    }
+    else
+    {
+        <table class="table table-bordered">
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Billing Cycle</th>
+                    <th>Category</th>
+                    <th>Active</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var subscription in Model)
+                {
+                    <tr>
+                        <td>@subscription.Name</td>
+
+                        <td>
+                            @subscription.Price.ToString("C")
+                        </td>
+
+                        <td>
+                            @subscription.BillingCycle
+                        </td>
+
+                        <td>
+                            @subscription.Category?.Name
+                        </td>
+
+                        <td>
+                            @(subscription.IsActive ? "Yes" : "No")
+                        </td>
+
+                        <td>
+                            <a asp-action="Details"
+                               asp-route-id="@subscription.SubscriptionId"
+                               class="btn btn-info btn-sm">
+                                Details
+                            </a>
+
+                            <a asp-action="Edit"
+                               asp-route-id="@subscription.SubscriptionId"
+                               class="btn btn-warning btn-sm">
+                                Edit
+                            </a>
+
+                            <a asp-action="Delete"
+                               asp-route-id="@subscription.SubscriptionId"
+                               class="btn btn-danger btn-sm">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    }
+
+</div>

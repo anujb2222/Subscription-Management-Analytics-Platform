@@ -1,0 +1,179 @@
+@model Sublytic.Models.Subscription
+
+@{
+    ViewData["Title"] = "Create Subscription";
+    var categories = ViewBag.Categories as IEnumerable<Sublytic.Models.Category>;
+}
+
+<div class="container mt-4">
+
+    <h2>Add Subscription</h2>
+
+    <hr />
+
+    <form asp-action="Create" method="post">
+
+        <div asp-validation-summary="ModelOnly"
+             class="text-danger mb-3"></div>
+
+        <!-- Service Name -->
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+
+            <input asp-for="Name"
+                   class="form-control" />
+
+            <span asp-validation-for="Name"
+                  class="text-danger"></span>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+            <label asp-for="Description"
+                   class="form-label"></label>
+
+            <textarea asp-for="Description"
+                      class="form-control"></textarea>
+
+            <span asp-validation-for="Description"
+                  class="text-danger"></span>
+        </div>
+
+        <!-- Price -->
+        <div class="mb-3">
+            <label asp-for="Price"
+                   class="form-label"></label>
+
+            <input asp-for="Price"
+                   type="number"
+                   step="0.01"
+                   min="0.01"
+                   class="form-control" />
+
+            <span asp-validation-for="Price"
+                  class="text-danger"></span>
+        </div>
+
+        <!-- Billing Cycle -->
+        <div class="mb-3">
+            <label asp-for="BillingCycle"
+                   class="form-label"></label>
+
+            <select asp-for="BillingCycle"
+                    asp-items="Html.GetEnumSelectList<Sublytic.Models.BillingCycle>()"
+                    class="form-control">
+            </select>
+
+            <span asp-validation-for="BillingCycle"
+                  class="text-danger"></span>
+        </div>
+
+        <!-- Start Date -->
+        <div class="mb-3">
+            <label asp-for="StartDate"
+                   class="form-label"></label>
+
+            <input asp-for="StartDate"
+                   type="date"
+                   class="form-control" />
+
+            <span asp-validation-for="StartDate"
+                  class="text-danger"></span>
+        </div>
+
+        <!-- Next Renewal Date -->
+        <div class="mb-3">
+            <label asp-for="NextRenewalDate"
+                   class="form-label"></label>
+
+            <input asp-for="NextRenewalDate"
+                   type="date"
+                   class="form-control" />
+
+            <span asp-validation-for="NextRenewalDate"
+                  class="text-danger"></span>
+        </div>
+
+        <!-- Category -->
+        <div class="mb-3">
+            <label class="form-label">
+                Category
+            </label>
+
+            <select name="CategoryId"
+                    class="form-control"
+                    required>
+
+                <option value="">
+                    Select Category
+                </option>
+
+                @if (categories != null)
+                {
+                    foreach (var category in categories)
+                    {
+                        <option value="@category.CategoryId">
+                            @category.Name
+                        </option>
+                    }
+                }
+
+            </select>
+
+            <span asp-validation-for="CategoryId"
+                  class="text-danger"></span>
+        </div>
+
+        <!-- Website URL -->
+        <div class="mb-3">
+            <label asp-for="WebsiteUrl"
+                   class="form-label"></label>
+
+            <input asp-for="WebsiteUrl"
+                   class="form-control"
+                   placeholder="Optional" />
+
+            <span asp-validation-for="WebsiteUrl"
+                  class="text-danger"></span>
+        </div>
+
+        <!-- Account Email -->
+        <div class="mb-3">
+            <label asp-for="AccountEmail"
+                   class="form-label"></label>
+
+            <input asp-for="AccountEmail"
+                   class="form-control"
+                   placeholder="Optional" />
+
+            <span asp-validation-for="AccountEmail"
+                  class="text-danger"></span>
+        </div>
+
+        <!-- Notes -->
+        <div class="mb-3">
+            <label asp-for="Notes"
+                   class="form-label"></label>
+
+            <textarea asp-for="Notes"
+                      class="form-control"
+                      placeholder="Optional"></textarea>
+
+            <span asp-validation-for="Notes"
+                  class="text-danger"></span>
+        </div>
+
+        <!-- Buttons -->
+        <button type="submit"
+                class="btn btn-primary">
+            Save
+        </button>
+
+        <a asp-action="Index"
+           class="btn btn-secondary">
+            Cancel
+        </a>
+
+    </form>
+
+</div>
