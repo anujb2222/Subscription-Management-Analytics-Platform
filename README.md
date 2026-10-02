@@ -1,10 +1,10 @@
-Sublytic — Subscription Management & Analytics Platform
+Subscription Management & Analytics Platform
 
 A full-stack web application for managing subscriptions, tracking customer plans, and visualizing subscription analytics.
 
 📌 Overview
 
-Sublytic is a subscription management and analytics platform designed to simplify subscription tracking and provide useful business insights through a centralized dashboard.
+subscription management and analytics platform designed to simplify subscription tracking and provide useful business insights through a centralized dashboard.
 
 ✨ Features
 
