@@ -27,11 +27,3 @@ Database: Microsoft SQL Server / T-SQL
 
 ORM: Entity Framework Core
 
-🖥️ Screenshots
-Dashboard
-
-Subscription Management
-
-Subscription Details
-
-Analytics
