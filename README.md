@@ -21,9 +21,9 @@ subscription management and analytics platform designed to simplify subscription
 
 Backend: C# / ASP.NET Core
 
-Frontend: HTML, CSS, JavaScript, Razor
+Frontend: HTML, CSS, Razor
 
-Database: Microsoft SQL Server / T-SQL
+Database: Microsoft SQL Server 
 
 ORM: Entity Framework Core
 
